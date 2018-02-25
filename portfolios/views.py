@@ -1,5 +1,9 @@
 from django.shortcuts import render
+from .models import PersonalData
 
 def portfolio_show(request):
-    return render(request, 'portfolios/portfolio_show.html', {})
+    person = PersonalData.objects.all()
+    context = {'person': person}
+
+    return render(request, 'portfolios/portfolio_show.html', context)
 

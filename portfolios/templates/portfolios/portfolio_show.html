@@ -1,9 +1,104 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Test</title>
+
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
+    rel="stylesheet" type="text/css">
+
+    <link href="{% static 'css/style.css' %}"rel="stylesheet" type="text/css">
+
 </head>
+
 <body>
-    <h1>Hello World</h1>
+
+    {% for person in person %}
+
+        <div class="container-fluid">
+            <div class="section">
+                <div class="container" id="show">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h1>{{person.name}}</h1>
+                            <h3>{{person.current_position}}</h3>
+                            <p><a href="{{person.github}}"> <i>Conocer mi repositorio<i></a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h2>Datos personales</h2>
+                        </div>
+                        <div class="panel-body">
+                            <p><span class="negrit">Fecha Nacimiento: </span>{{person.birth_date}}</p>
+                            <p><span class="negrit">Ubicacion : </span>{{person.adress}}</p>
+                            <p><span class="negrit">Ciudad :</span>{{person.city}} <span class="negrit">Postal Code: </span>{{person.postal_code}}</p>
+                            <p><span class="negrit">Tel :</span> {{person.phone}} <span class="negrit"> Cel: </span>{{person.mobile}}</p>
+                            <p><span class="negrit">E-mail :</span>{{person.email}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <div class="section">
+             <div class="container">
+                 <div class="row">
+                     <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h2 id="Conhecimentos">Conocimientos</h2>
+                        </div>
+
+                        <div class="panel-body">
+                            <p>{{person.knowledge|linebreaks}}</p>
+                        </div>
+                    </div>
+                </div>
+             </div>
+         </div>
+
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                     <div class="panel panel-primary">
+                        <div class="panel-heading">
+                             <h2 id="Experencia">Experiencia Profesional</h2>
+                        </div>
+                        <div class="panel-body">
+                            <p><span class="negrit">Empresa: </span>{{person.companie}}</p>
+                            <p><span class="negrit">Empleo : </span>{{person.current_position}}</p>
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </div>
+
+         <div class="section">
+             <div class="container">
+                 <div class="row">
+                     <div class="panel panel-primary">
+                             <div class="panel-heading">
+                                 <h2 id="Resumo">Resumen</h2>
+                             </div>
+                             <div class="panel-body">
+                                 <p><span class="negrit"></span>{{person.about}}</p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% empty %}
+     <div class="alert alert-danger">
+         <h2>Todavía no has registrado una información!</h2>
+     </div>
+    {% endfor %}
+
 </body>
 </html>
